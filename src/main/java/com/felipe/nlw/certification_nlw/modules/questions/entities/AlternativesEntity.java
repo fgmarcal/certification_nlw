@@ -1,4 +1,4 @@
-package com.felipe.nlw.certification_nlw.modules.students.entities;
+package com.felipe.nlw.certification_nlw.modules.questions.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,26 +7,25 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
+@Entity(name = "alternatives")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "students")
-public class StudentEntity {
+public class AlternativesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column
+    private String description;
 
-    @OneToMany(mappedBy = "studentEntity")
-    private List<CertificationStudentEntity> certificationStudentEntity;
+    @Column
+    private boolean isCorrect;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-}
 
+}
